@@ -37,11 +37,19 @@ function App() {
     // console.log(filteredData);
   }
 
+  function filterInput(value) {
+    setFilteredData(
+      data.filter(
+        item => item.Nombres.toLowerCase().indexOf(value.toLowerCase()) !== -1
+      )
+    );
+  }
+
   return (
     <div>
       <h1>Race Results</h1>
       <FilterButtons filter={filter} />
-      <FilterInput />
+      <FilterInput filterInput={filterInput} />
       <ShowTable data={filteredData} />
     </div>
   );
