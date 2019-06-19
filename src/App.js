@@ -27,21 +27,22 @@ function App() {
     let endpoint = "/race.json";
     getDataFromServer(endpoint).then(data => {
       setData(data);
+      setFilteredData(data);
     });
   }, []);
 
-  useEffect(e => {
-    console.log(e);
-    setFilteredData(filteredData);
-  }, []);
+  function filter(value) {
+    // console.log("Filter function", value);
+    setFilteredData(data.filter(item => item.Sexo === value));
+    // console.log(filteredData);
+  }
 
-  // console.log(data);
   return (
     <div>
       <h1>Race Results</h1>
-      <FilterButtons />
+      <FilterButtons filter={filter} />
       <FilterInput />
-      <ShowTable data={data} />
+      <ShowTable data={filteredData} />
     </div>
   );
 }
