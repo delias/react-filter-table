@@ -25,10 +25,14 @@ function App() {
 
   useEffect(() => {
     let endpoint = "/race.json";
-    getDataFromServer(endpoint).then((data, filteredData) => {
+    getDataFromServer(endpoint).then(data => {
       setData(data);
-      setFilteredData(filteredData);
     });
+  }, []);
+
+  useEffect(e => {
+    console.log(e);
+    setFilteredData(filteredData);
   }, []);
 
   // console.log(data);
