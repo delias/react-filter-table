@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FilterButtons from "./components/FilterButtons";
 import FilterInput from "./components/FilterInput";
 import ShowTable from "./components/ShowTable";
+import Distances from "./components/Distances";
 
 const getDataFromServer = async function(endpoint) {
   let data = fetch(endpoint, {
@@ -22,12 +23,15 @@ const getDataFromServer = async function(endpoint) {
 function App() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [listOfDistances, setListOfDistances] = useState([]);
 
   useEffect(() => {
     let endpoint = "/race.json";
     getDataFromServer(endpoint).then(data => {
       setData(data);
       setFilteredData(data);
+      // console.log(data);
+      setListOfDistances([...new Set(data.map(item => item.Dist))]);
     });
   }, []);
 
@@ -50,6 +54,7 @@ function App() {
       <h1>Race Results</h1>
       <FilterButtons filter={filter} />
       <FilterInput filterInput={filterInput} />
+      <Distances data={listOfDistances} />
       <ShowTable data={filteredData} />
     </div>
   );

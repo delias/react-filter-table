@@ -4,13 +4,14 @@ import RowTable from "./RowTable";
 export default function ShowTable(props) {
   const data = props.data;
   // console.log(data);
-  let rows = data.map(item => {
+  const rows = data.map(item => {
     return (
       <RowTable
         key={item.Num}
         nombres={item.Nombres}
         apellidos={item.Apellidos}
         sexo={item.Sexo}
+        distance={item.Dist}
       />
     );
   });
@@ -19,9 +20,10 @@ export default function ShowTable(props) {
       <table>
         <thead>
           <tr>
-            <th>firstname</th>
-            <th>lastname</th>
-            <th>sex</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Sex</th>
+            <th>Distance</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
