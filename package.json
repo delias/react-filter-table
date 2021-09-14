@@ -38,6 +38,6 @@
   "devDependencies": {
     "eslint-utils": ">=1.4.1",
     "gh-pages": "^2.2.0",
-    "set-value": "^3.0.2"
+    "set-value": "^4.0.1"
   }
 }
